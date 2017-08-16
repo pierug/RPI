@@ -35,6 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/DHT11.o \
+	${OBJECTDIR}/I2C.o \
+	${OBJECTDIR}/MLX90614.o \
 	${OBJECTDIR}/Pins.o \
 	${OBJECTDIR}/Serial.o \
 	${OBJECTDIR}/main.o
@@ -63,6 +66,21 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rpi_cpp: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rpi_cpp ${OBJECTFILES} ${LDLIBSOPTIONS} -lwiringPi
+
+${OBJECTDIR}/DHT11.o: DHT11.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DHT11.o DHT11.cpp
+
+${OBJECTDIR}/I2C.o: I2C.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2C.o I2C.cpp
+
+${OBJECTDIR}/MLX90614.o: MLX90614.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MLX90614.o MLX90614.cpp
 
 ${OBJECTDIR}/Pins.o: Pins.cpp
 	${MKDIR} -p ${OBJECTDIR}
