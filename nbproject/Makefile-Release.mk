@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/I2C.o \
 	${OBJECTDIR}/MLX90614.o \
 	${OBJECTDIR}/Pins.o \
+	${OBJECTDIR}/SPI.o \
 	${OBJECTDIR}/Serial.o \
 	${OBJECTDIR}/main.o
 
@@ -86,6 +87,11 @@ ${OBJECTDIR}/Pins.o: Pins.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pins.o Pins.cpp
+
+${OBJECTDIR}/SPI.o: SPI.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SPI.o SPI.cpp
 
 ${OBJECTDIR}/Serial.o: Serial.cpp
 	${MKDIR} -p ${OBJECTDIR}
